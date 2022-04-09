@@ -11,5 +11,6 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'), 
     path('accounts/', include('allauth.urls')),
     path('logout/', LogoutView.as_view()),
+    path('about/', views.AboutViews.as_view(), name='about'),
     path('<int:pk>/test/', views.TestView.as_view(), name='test'),
 ]

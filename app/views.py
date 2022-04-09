@@ -10,6 +10,9 @@ from app.models import Toilet
 class IndexView(generic.TemplateView):
     template_name = 'app/login.html'
 
+class AboutView(generic.TemplateView):
+    template_name = 'app/about.html'
+
 class TestView(generic.DetailView):
     template_name = 'app/test.html'
     model = Toilet

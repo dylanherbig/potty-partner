@@ -1,0 +1,52 @@
+{% load bootstrap5 %} 
+{% bootstrap_css %} 
+{% bootstrap_javascript %} 
+{% bootstrap_messages %}
+{% load socialaccount %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">💩 Potty Partner</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/about">About Us</a>
+          </li>
+  
+        </ul>
+          {% if user.is_authenticated %}
+              <span class="navbar-text">
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Welcome, {{ user.first_name }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                      <li><a class="dropdown-item" href="/logout">Log out?</a></li>
+                    </ul>
+                </div>
+              </span>
+          {% else %}
+              <span class="navbar-text">
+                  <a class="nav-link btn btn-primary text-light" href={% provider_login_url 'google' %} role="button">Log In</a>
+              </span>
+          {% endif %}
+      </div>
+    </div>
+  </nav>
+
+<html>
+  <body>
+    <h1>About Us</h1>
+
+    <p>
+      Ever needed to take a dump really bad? Ever struggled to find a toilet? Us
+      too! That's exactly why we decided to make Potty Partner.
+    </p>
+  </body>
+</html>
