@@ -148,7 +148,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 # REDIRECT URL AFTER GOOGLE LOGINs
-SITE_ID = 3
+SITE_ID = 4
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 SOCIALACCOUNT_LOGIN_ON_GET=True # to get rid of page asking for email for multiple users
