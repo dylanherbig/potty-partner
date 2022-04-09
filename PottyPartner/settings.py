@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-oogeh89aspszf&a(i_su-k*2jd+w-seyf9^*lon8dbiuqf01k)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1','potty-partner.herokuapp.com']
+
 
 
 # Application definition
@@ -143,7 +144,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = 'static/'
 
 # REDIRECT URL AFTER GOOGLE LOGINs
@@ -157,3 +158,16 @@ SOCIALACCOUNT_LOGIN_ON_GET=True # to get rid of page asking for email for multip
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Activate Django-Heroku.
+# Use this code to avoid the psycopg2 / django-heroku error!  
+# Do NOT import django-heroku above!
+try:
+    if 'HEROKU' in os.environ:
+        import django_heroku
+        django_heroku.settings(locals())
+    if 'DATABASE_URL' in os.environ:
+        import dj_database_url
+        DATABASES = {'default': dj_database_url.config()}
+except ImportError:
+    found = False
