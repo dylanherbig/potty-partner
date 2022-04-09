@@ -11,5 +11,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('logout/', LogoutView.as_view()),
     path('about/', views.AboutView.as_view(), name='about'),
+    path(r'map/', views.default_map, name="default"),
     path('<int:pk>/test/', views.TestView.as_view(), name='test'),
 ]

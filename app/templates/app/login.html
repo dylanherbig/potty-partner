@@ -39,12 +39,43 @@
       </div>
     </div>
   </nav>
-
-<html>
+  
+  <html>
     <body>
         <h1>Potty Partner Application </h1>
         {% if user.is_authenticated %}
             <p>Welcome, You are logged in as {{ user.username }}</p>
+            <head>
+                <title>Interactive maps for Django web apps</title>
+                <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+                <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+            </head>
+              <body>
+               <div id='map' width="100%" style='height:400px'></div>
+               <script>
+                mapboxgl.accessToken = 'pk.eyJ1Ijoic2pvc2hpMTIyNSIsImEiOiJjbDFzOW9yMzcwcHN6M2NzNnF0bXRxOGdpIn0.dZv1B-VUgqjbPp__sRW8FA';
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style: 'mapbox://styles/mapbox/streets-v10',
+                    center: [-78.5034395, 38.03561],
+                    zoom: 15
+                });
+                
+                // Add geolocate control to the map.
+                map.addControl(
+                new mapboxgl.GeolocateControl({
+                positionOptions: {
+                enableHighAccuracy: true
+                },
+                // When active the map will receive updates to the device's location as it changes.
+                trackUserLocation: true,
+                // Draw an arrow next to the location dot to indicate which direction the device is heading.
+                showUserHeading: true
+                })
+                );
+                
+               </script>
+              </body>
         {% else %}
             <a href="{% provider_login_url 'google' %}">Login With Google</a>
         {% endif %}
