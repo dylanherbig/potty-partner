@@ -10,5 +10,6 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'), 
     path('accounts/', include('allauth.urls')),
     path('logout/', LogoutView.as_view()),
-    path('about/', views.AboutView.as_view())
+    path('about/', views.AboutView.as_view()),
+    path('create-toilet/', views.create_toilet, name='create-toilet'),
 ]

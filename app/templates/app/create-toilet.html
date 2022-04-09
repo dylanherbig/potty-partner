@@ -23,8 +23,7 @@
             <a class="nav-link" href="/create-toilet">Create Toilet 🚽</a>
           </li>
           {% endif %}
-
-
+  
         </ul>
           {% if user.is_authenticated %}
               <span class="navbar-text">
@@ -46,13 +45,13 @@
     </div>
   </nav>
 
-<html>
-    <body>
-        <h1>Potty Partner Application </h1>
-        {% if user.is_authenticated %}
-            <p>Welcome, You are logged in as {{ user.username }}</p>
-        {% else %}
-            <a href="{% provider_login_url 'google' %}">Login With Google</a>
-        {% endif %}
-    </body>
-</html>
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <h1 class="mt-3">Enter your Toilet Info 🚽</h1>
+    <form action="/create-toilet/"  method="post">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <input class="btn btn-primary" type="submit" value="Submit Toilet">
+        {% endbuttons %}
+    </form>
+</div>
