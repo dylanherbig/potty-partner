@@ -2,6 +2,8 @@ from re import template
 from django.shortcuts import render, HttpResponse
 from django.views import generic
 
+from app.models import Toilet
+
 # Create your views here.
 
 
