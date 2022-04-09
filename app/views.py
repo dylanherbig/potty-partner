@@ -1,8 +1,9 @@
+from re import template
 from django.shortcuts import render, HttpResponse
 from django.views import generic
 
 # Create your views here.
 
 
-def IndexView(request):
-    return HttpResponse("Hello world! We are the team behind Potty Partner :))")
+class IndexView(generic.TemplateView):
+    template_name = 'app/login.html'
